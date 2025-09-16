@@ -28,8 +28,8 @@ import (
 	"strings"
 	"syscall"
 
-	"github.com/go-kit/kit/log"
-	"github.com/go-kit/kit/log/level"
+	"github.com/go-kit/log"
+	"github.com/go-kit/log/level"
 	"github.com/oklog/run"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/collectors"
@@ -175,7 +175,7 @@ func Main() error {
 			}
 			return nil
 		}, func(error) {
-			l.Close()
+			_ = l.Close()
 		})
 	}
 
@@ -188,7 +188,7 @@ func Main() error {
 			for {
 				select {
 				case <-term:
-					logger.Log("msg", "caught interrupt; gracefully cleaning up; see you next time!")
+					_ = logger.Log("msg", "caught interrupt; gracefully cleaning up; see you next time!")
 					return nil
 				case <-cancel:
 					return nil
@@ -215,7 +215,7 @@ func Main() error {
 		gp := deviceplugin.NewGenericPlugin(d, pluginPath, log.With(logger, "resource", d.Name), prometheus.WrapRegistererWith(prometheus.Labels{"resource": d.Name}, r), enableUSBDiscovery)
 		// Start the generic device plugin server.
 		g.Add(func() error {
-			logger.Log("msg", fmt.Sprintf("Starting the generic-device-plugin for %q.", d.Name))
+			_ = logger.Log("msg", fmt.Sprintf("Starting the generic-device-plugin for %q.", d.Name))
 			return gp.Run(ctx)
 		}, func(error) {
 			cancel()
