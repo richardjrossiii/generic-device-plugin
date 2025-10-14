@@ -1,0 +1,17 @@
+apiVersion: v1
+entries:
+  generic-device-plugin:
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2025-10-14T16:09:56.765186823-07:00"
+    description: A Helm chart for deploying the generic-device-plugin on Kubernetes
+    digest: ec408aa0bd05b9bde9e9b9a36ca584710958b396a17a5b59d09cec4f614d8bbf
+    maintainers:
+    - name: squat
+      url: https://github.com/squat
+    name: generic-device-plugin
+    type: application
+    urls:
+    - https://richardjrossiii.github.io/generic-device-plugin/generic-device-plugin-0.1.0.tgz
+    version: 0.1.0
+generated: "2025-10-14T16:09:56.764449388-07:00"
